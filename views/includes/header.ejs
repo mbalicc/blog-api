@@ -1,9 +1,12 @@
 <header>
     <h2><a href="/" >Blog Post App </a></h2>
     <nav>
+        <%if(user){%>
+            <a href="/user/logout">Log Out</a>
+        <%}else{%>
+                <a href="/user/login">Log In</a>
+                <a href="/user/register">Register</a>
 
-        <a href="/user/login">Log In</a>
-        <a href="/user/register">Register</a>
-        <a href="/user/logout">Log Out</a>
+        <%}%>
     </nav>
 </header>

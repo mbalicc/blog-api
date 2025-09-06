@@ -1,13 +1,14 @@
+require("dotenv").config()
 const express = require('express');
 
 const cors = require('cors');
 const morgan = require('morgan');
-
+const cookieParser =require("cookie-parser")
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 const bodyParser = require('body-parser');
-
-
+app.use(cookieParser())
+const {checkUser} =require("./middleware/authMiddleware")
 
 
 
@@ -19,6 +20,7 @@ app.use(morgan('dev'));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
+app.use(checkUser)
 const userRoutes=require("./routes/userRoutes")
 app.use("/user",userRoutes);
 
@@ -28,6 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.render("homepage")
 });
+
 
 
 
