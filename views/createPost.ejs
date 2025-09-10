@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<%- include ('includes/head.ejs') %>
+<body>
+<%- include ('includes/header.ejs') %>
+
+<main>
+    <h2 style="text-align: center">Create a Post</h2>
+    <%  errors.forEach(error=>{
+    %>
+        <p class ="notice"> <%= error %></p>
+    <%
+    })%>
+        <form name="/createPost" method="post">
+
+            <fieldset>
+                <legend>Create a New Post</legend>
+                <label for="title"><small>Title</small></label>
+                <input name="title" type="text" id="title">
+                <label for="body"><small>Content</small></label>
+                <textarea name="body" id="body"></textarea>
+                <br>
+                <button>Create Post</button>
+            </fieldset>
+        </form>
+
+
+</main>
+
+<%-include ('includes/footer.ejs')%>
+</body>
+</html>

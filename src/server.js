@@ -24,10 +24,16 @@ app.use(checkUser)
 const userRoutes=require("./routes/userRoutes")
 app.use("/user",userRoutes);
 
+const postRoutes=require("./routes/postRoutes")
+app.use("/post",postRoutes)
+
 app.use(express.urlencoded({ extended: true }));
 
 // Test ruta
 app.get('/', (req, res) => {
+    if(res.locals.user){
+        return res.redirect("/post/dashboard")
+    }
     res.render("homepage")
 });
 

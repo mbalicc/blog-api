@@ -1,7 +1,12 @@
 <header>
+    <%if (user){%>
+        <h2><a href="/post/dashboard" >Blog Post App </a></h2>
+    <%}else{%>
     <h2><a href="/" >Blog Post App </a></h2>
+    <%}%>
     <nav>
         <%if(user){%>
+            <a href="/post/createPost">Create Post</a>
             <a href="/user/logout">Log Out</a>
         <%}else{%>
                 <a href="/user/login">Log In</a>

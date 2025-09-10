@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken')
 
 
 exports.checkUser=(req,res,next)=>{
+    const errors=[];
     try{
         const decoded =jwt.verify(req.cookies.userinfo,process.env.JWTSECRET)
         req.user=decoded

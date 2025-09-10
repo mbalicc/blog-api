@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<%- include ('includes/head.ejs') %>
+<body>
+<%- include ('includes/header.ejs') %>
+
+<main>
+    <h2 style="text-align: center">Edit a Post</h2>
+    <%  errors.forEach(error=>{
+    %>
+        <p class ="notice"> <%= error %></p>
+    <%
+    })%>
+    <form name="/editPost" method="post">
+
+        <fieldset>
+            <legend>Edit a Post</legend>
+            <label for="title"><small>Title</small></label>
+            <input name="title" type="text" id="title" value="<%-post.title%>">
+            <label for="body"><small>Content</small></label>
+            <textarea name="body" id="body"><%=post.body%></textarea>
+            <br>
+            <button>Edit Post</button>
+        </fieldset>
+    </form>
+
+
+</main>
+
+<%-include ('includes/footer.ejs')%>
+</body>
+</html>

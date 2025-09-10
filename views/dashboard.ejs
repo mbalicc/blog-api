@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<%- include ('includes/head.ejs') %>
+<body>
+<%- include ('includes/header.ejs') %>
+
+<main>
+    <h2 style="text-align: center">Dashboard</h2>
+    <%if(!posts.length){%>
+    <h3 style="text-align: center">You do not have any posts!</h3>
+    <%}else{%>
+
+    <h3>Hello <%=posts[0].name%>, your Posts:</h3>
+    <ul>
+        <%posts.forEach(post=>{%>
+            <li><a href="/post/post<%=post.id%>"> <%-post.title  %>  </a>&nbsp;&nbsp;
+                 <small>  <%=new Date(post.createdDate).getDate()%>/<%=new Date(post.createdDate).getMonth()+1%>/
+                     <%=new Date(post.createdDate).getFullYear()%></small>
+
+            </li>
+        <%})%>
+    </ul>
+
+    <%}%>
+
+
+
+
+</main>
+
+<%-include ('includes/footer.ejs')%>
+</body>
+</html>

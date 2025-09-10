@@ -4,11 +4,20 @@
 <body>
 <%- include ('includes/header.ejs') %>
 
-<main>
-<h2 style="text-align: center">Wellcome</h2>
-    <h4 style="text-align: center">Join our Blog</h4>
+<%if(user){%>
+    <main>
+        <h2 style="text-align: center">Dashboard</h2>
 
-</main>
+
+    </main>
+<%}else {%>
+    <main>
+        <h2 style="text-align: center">Wellcome</h2>
+        <h4 style="text-align: center">Join our Blog</h4>
+
+    </main>
+<%}%>
+
 
 <%-include ('includes/footer.ejs')%>
 </body>
