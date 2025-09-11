@@ -5,22 +5,40 @@
 <%- include ('includes/header.ejs') %>
 
 <main>
+    <%if(user.role==="admin"){%>
+        <h2 style="text-align: center"> Admin Dashboard</h2>
+        <%if(!allPosts.length){%>
+        <h3 style="text-align: center">There are no posts!</h3>
+        <%}else{%>
+        <h3>All Posts: </h3>
+        <ul>
+            <%allPosts.forEach(post=>{%>
+            <li><a href="/post/post<%=post.id%>"> <%-post.title  %>  </a>&nbsp;&nbsp;
+                <small>posted by: <%=post.name%> on</small>&nbsp;&nbsp;
+                <small>  <%=new Date(post.createdDate).getDate()%>/<%=new Date(post.createdDate).getMonth()+1%>/
+                    <%=new Date(post.createdDate).getFullYear()%></small>
+            </li>
+            <br>
+
+            <%})%>
+        </ul>
+        <%}%>
+
+    <%}else{%>
     <h2 style="text-align: center">Dashboard</h2>
     <%if(!posts.length){%>
     <h3 style="text-align: center">You do not have any posts!</h3>
     <%}else{%>
-
     <h3>Hello <%=posts[0].name%>, your Posts:</h3>
     <ul>
         <%posts.forEach(post=>{%>
             <li><a href="/post/post<%=post.id%>"> <%-post.title  %>  </a>&nbsp;&nbsp;
                  <small>  <%=new Date(post.createdDate).getDate()%>/<%=new Date(post.createdDate).getMonth()+1%>/
                      <%=new Date(post.createdDate).getFullYear()%></small>
-
             </li>
         <%})%>
     </ul>
-
+    <%}%>
     <%}%>
 
 

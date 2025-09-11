@@ -19,3 +19,12 @@ exports.mustBeLoggedIn=(req,res,next)=>{
         return next()
     }return res.redirect("/")
 }
+
+exports.mustBeAdmin=(req,res,next)=>
+{
+    if (res.locals.user.role == "admin"){
+        return next()
+    }
+    return res.redirect("/")
+
+}

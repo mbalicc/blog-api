@@ -8,6 +8,9 @@
         <%if(user){%>
             <a href="/post/createPost">Create Post</a>
             <a href="/user/logout">Log Out</a>
+        <%if(user.role="admin"){%>
+            <a href="/user/allusers">User Dashboard</a>
+        <%}%>
         <%}else{%>
                 <a href="/user/login">Log In</a>
                 <a href="/user/register">Register</a>

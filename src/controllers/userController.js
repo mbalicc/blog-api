@@ -114,9 +114,12 @@ exports.login=async (req,res)=>{
 exports.logout=(req,res)=>{
     res.clearCookie("userinfo")
 res.redirect("/");
-
-
 }
+
+exports.showAllUsers=async (req,res)=>{
+    res.render("users")
+}
+
 
 
 

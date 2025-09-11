@@ -122,7 +122,12 @@ exports.showDashboard=async (req,res)=>{
 
     const posts=result.recordset;
 
-    res.render("dashboard",{posts})
+    const adminResult=await pool.request()
+        .query(`select p.*, u.id as userid, u.name from posts as p join users as u on p.userID=u.id order by p.createdDate desc`)
+
+    const allPosts=adminResult.recordset
+
+    res.render("dashboard",{posts,allPosts})
 }
 
 exports.deletePost=async (req,res)=>{
